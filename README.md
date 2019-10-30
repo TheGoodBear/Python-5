@@ -7,7 +7,8 @@
     - Spécifications : 
         - Diagramme de classes
 
-    - IDE : NA
+    - IDE : 
+        - Block selection (Alt + middle mouse button)
 
     - Architecture logicielle :
         - Programmation Orientée Objet

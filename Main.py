@@ -1,4 +1,5 @@
 # Maze v1.2
+# POO
 
 # Modules importation
 # -------------------
@@ -9,19 +10,6 @@ import random
 
 # Variables (must be declared BEFORE using them)
 # ---------
-
-# Variables for player data
-PlayerName: str = ""
-PlayerImage: str = "☻" # alt+2
-# Variables for maze and maze elements
-MazeFilePath: str = "Mazes/"
-MazeFileName: str = "Maze 1"
-Maze = list()
-MazeElements = list()
-# Variables for player character
-PlayerX: int = 0
-PlayerY: int = 0
-PlayerBackpack = list()
 
 
 # Methods (must be declared BEFORE using them)
@@ -75,49 +63,6 @@ def StartGame():
         "\nÀ chaque tour tu peux effectuer l'une des actions suivantes :" + 
         "\nTe déplacer vers le (H)aut, le (B)as, la (G)auche, la (D)roite ou (Q)uitter le jeu (et perdre...)" + 
         "\nBonne chance.")
-
-
-def LoadMazeFromFile(FileName: str):
-    """ 
-        Load maze from text file and store it into a 2 dimensional list
-
-        :param arg1: The name of the file
-        :type arg1: string
-    """
-
-    # Use global Maze variable
-    global Maze
-
-    # try/exception block to trap errors
-    try:
-        # Open file in read mode (and automatically close it when finished)
-        with open(MazeFilePath + FileName + ".maz", "r") as MyFile:
-            for Line in MyFile:
-                # Ignore blank lines and comments
-                if(Line[0] == "\n" or Line[0] == "#"):
-                    continue
-                # Define temporary list to store every character in a line
-                LineCharacters = list()
-                # For each Character in Line
-                for Character in Line:
-                    # Store Character in LineCharacters list (except new line \n)
-                    if (Character != "\n"):
-                        # Search in maze elements for matching symbol
-                        CurrentElement = GetMazeElement(Symbol=Character)
-                        if(CurrentElement != None):
-                            # If an element was found, append element's image
-                            LineCharacters.append(CurrentElement["Image"])
-                        else:
-                            # If no element was found append character
-                            LineCharacters.append(Character)
-                # Store LineCharacters list in Maze list (2 dimensional list)
-                Maze.append(LineCharacters)
-
-    except OSError:
-        # If there is an OSError exception
-        print("\nLe labyrinthe demandé n'a pas été trouvé !\n")
-        # exit application
-        os._exit(1)
 
 
 def LoadMazeElementsFromFile(FileName: str):
