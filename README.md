@@ -1,31 +1,22 @@
-# Formation Python étape 4
+# Formation Python étape 5
 
-    Jeu du labyrinthe V1.1
+    Jeu du labyrinthe V1.2
 
     Notions abordées :
 
-    - Spécifications : NA
+    - Spécifications : 
+        - Diagramme de classes
 
-    - IDE : 
-        - Débogage : Debug Console
+    - IDE : NA
 
     - Architecture logicielle :
-        - parsing de fichier
+        - Programmation Orientée Objet
+        - Classe, Instance, Propriété, Méthode (staticque et d'instance), Constructeur
 
-    - Données :
-        - Sérialisation (JSON, XML)
+    - Données : NA
 
     - Langage :
-        - Modules (random, json)
-        - Diverses manières de parcourir/exploiter des listes
-        - Générateur de nombre aléatoire
-        - Lecture d'un fichier JSON
-        - Dictionnaire {}
-        - Gestion des erreurs/exceptions (try/except)
-        - Mot-clé : None
-        - Paramètres de méthode nommés
-        - Opérateur de comparaison : in
-        - Mot-clés : continue, break
+        - POO (class, __init__, @Stqticmethod, @property)
 
 # Énoncé du sujet
 

@@ -1,4 +1,4 @@
-# Maze v1.1
+# Maze v1.2
 
 # Modules importation
 # -------------------
