@@ -17,7 +17,7 @@
     - Données : NA
 
     - Langage :
-        - POO (class, __init__, @Stqticmethod, @property)
+        - POO (class, __init__, @staticmethod, @classmethod, @property)
 
 # Énoncé du sujet
 
