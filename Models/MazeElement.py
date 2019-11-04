@@ -1,5 +1,6 @@
 import os
 import json
+import Models.Maze as Maze
 
 class MazeElement:
     """
@@ -24,20 +25,17 @@ class MazeElement:
 
 
     @staticmethod
-    def LoadMazeElementsFromFile(FileName: str):
+    def LoadElementsFromFile():
         """ 
             Load maze elements from json file and store them into list of dictionaries
-
-            :param arg1: The name of the file
-            :type arg1: string
         """
 
         # try/exception block to trap errors
         try:
             # Open JSON file in read mode (and automatically close it when finished)
-            with open(Maze.MazeFilePath + FileName + " Elements.json", "r", encoding='utf-8') as MyFile:
+            with open(Maze.FilePath + Maze.FileName + " Elements.json", "r", encoding='utf-8') as MyFile:
                 # Load them into maze elements list of dictionary
-                MazeElements = json.load(MyFile)
+                Maze.Elements = json.load(MyFile)
                 #print(MazeElements)
 
             # # Code sample to write to JSON file
@@ -76,7 +74,7 @@ class MazeElement:
         # return next((ME for ME in MazeElements if ME["Symbol"] == Symbol), None)
 
         # Browse all elements to find the matching one
-        for CurrentElement in MazeElements:
+        for CurrentElement in Maze.Elements:
             if(Name != "" and CurrentElement["Name"] == Name):
                 return CurrentElement
             elif(Symbol != "" and CurrentElement["Symbol"] == Symbol):

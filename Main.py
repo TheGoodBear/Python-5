@@ -7,6 +7,7 @@ import os
 import json
 import random
 import Models.Game as Game
+import Models.Player as Player
 import Models.Maze as Maze
 
 
@@ -27,30 +28,30 @@ import Models.Maze as Maze
 Game.ApplicationStart()
 
 # Ask for player data
-PlayerName = GetPlayerData()
+PlayerName = Player.GetPlayerData()
 
 # Say welcome
-SayWelcome()
+Game.SayWelcome()
 
 
 # 2) Initialize Maze
-
+Maze.Initialize()
 # Load maze elements from json file
-Maze.LoadMazeElementsFromFile(MazeFileName)
+Maze.LoadElementsFromFile()
 # Load maze from text file
-Maze.LoadMazeFromFile(MazeFileName)
+Maze.LoadMapFromFile()
 
 # Put objects in random positions
-PlaceMazeObjectsAtRandomPositions()
+Maze.PlaceObjectsAtRandomPositions()
 
 # Place player in maze
-PlacePlayerInMaze()
+Player.PlaceInMaze()
 
 # Draw maze on screen
-DrawMazeOnScreen()
+Maze.DrawOnScreen()
 
 # Start game
-StartGame()
+Game.StartGame()
 
 
 # 3) Game loop
@@ -62,7 +63,7 @@ EndOfGame: bool = False
 while not EndOfGame:
 
     # Wait for a player action
-    PlayerAction: str = WaitForPlayerAction()
+    PlayerAction: str = Player.WaitForAction()
 
     # Do action
-    EndOfGame = ExecutePlayerAction(PlayerAction)
+    EndOfGame = Player.ExecuteAction(PlayerAction)

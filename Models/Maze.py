@@ -1,6 +1,6 @@
 import os
 import random
-import Models.MazeElement as ME
+import Models.MazeElement as MazeElement
 
 class Maze:
     """
@@ -32,9 +32,9 @@ class Maze:
 
 
     @classmethod
-    def LoadFromFile(cls):
+    def LoadMapFromFile(cls):
         """ 
-            Load maze from text file and store it into a 2 dimensional list
+            Load maze map from text file and store it into a 2 dimensional list
         """
 
         # try/exception block to trap errors
@@ -52,7 +52,7 @@ class Maze:
                         # Store Character in LineCharacters list (except new line \n)
                         if (Character != "\n"):
                             # Search in maze elements for matching symbol
-                            CurrentElement = ME.GetElement(Symbol=Character)
+                            CurrentElement = MazeElement.GetElement(Symbol=Character)
                             if(CurrentElement != None):
                                 # If an element was found, append element's image
                                 LineCharacters.append(CurrentElement["Image"])
@@ -85,7 +85,7 @@ class Maze:
                 # draw random coordinates in maze limits
                 ObjectX: int = random.randint(0, len(Maze)-1)
                 ObjectY: int = random.randint(0, len(Maze[0])-1)
-                while(Maze[ObjectY][ObjectX] != ME.GetElement("Sol")["Image"]):
+                while(Maze[ObjectY][ObjectX] != MazeElement.GetElement("Sol")["Image"]):
                     # do it again until random position is ground
                     ObjectX = random.randint(0, len(Maze)-1)
                     ObjectY = random.randint(0, len(Maze[0])-1)
