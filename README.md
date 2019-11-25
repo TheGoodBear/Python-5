@@ -17,6 +17,7 @@
     - Données : NA
 
     - Langage :
+        - import (from syntax)
         - POO (class, __init__, @staticmethod, @classmethod, @property)
 
 # Énoncé du sujet

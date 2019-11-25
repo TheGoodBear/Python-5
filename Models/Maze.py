@@ -1,6 +1,6 @@
 import os
 import random
-import Models.MazeElement as MazeElement
+from Models.MazeElement import *
 
 class Maze:
     """
@@ -9,26 +9,26 @@ class Maze:
         Instanciable
     """
 
-    FilePath: str = ""
-    FileName: str = ""
+    FilePath: str 
+    FileName: str 
     Map = list()
     Elements = list()
 
 
-    @staticmethod
-    def Initialize( 
+    @classmethod
+    def Initialize(cls, 
         FilePath: str = "Mazes/", 
         FileName: str = "Maze 1"):
         """
             Constructor
-
+    
             :param arg1: Maze file path
             :type arg1: string
             :param arg2: Maze file name
             :type arg2: string
         """
-        FilePath: str = FilePath
-        FileName: str = FileName
+        cls.FilePath = FilePath
+        cls.FileName = FileName
 
 
     @classmethod
@@ -40,7 +40,7 @@ class Maze:
         # try/exception block to trap errors
         try:
             # Open file in read mode (and automatically close it when finished)
-            with open(cls.MazeFilePath + cls.FileName + ".maz", "r") as MyFile:
+            with open(cls.FilePath + cls.FileName + ".maz", "r") as MyFile:
                 for Line in MyFile:
                     # Ignore blank lines and comments
                     if(Line[0] == "\n" or Line[0] == "#"):
@@ -52,15 +52,15 @@ class Maze:
                         # Store Character in LineCharacters list (except new line \n)
                         if (Character != "\n"):
                             # Search in maze elements for matching symbol
-                            CurrentElement = MazeElement.GetElement(Symbol=Character)
+                            CurrentElement = MazeElement.GetElement(cls, Symbol=Character)
                             if(CurrentElement != None):
                                 # If an element was found, append element's image
                                 LineCharacters.append(CurrentElement["Image"])
                             else:
                                 # If no element was found append character
                                 LineCharacters.append(Character)
-                    # Store LineCharacters list in Maze list (2 dimensional list)
-                    Map.append(LineCharacters)
+                    # Store LineCharacters list in Map list (2 dimensional list)
+                    cls.Map.append(LineCharacters)
 
         except OSError:
             # If there is an OSError exception
@@ -75,26 +75,23 @@ class Maze:
             Place all objects from dictionary at random positions in maze
         """
 
-        # Use global Maze variable
-        global Maze
-
         # Browse every maze element
         for CurrentObject in cls.Elements:
             if("Pick" in CurrentObject["Behavior"]):
                 # the current object is pickable
                 # draw random coordinates in maze limits
-                ObjectX: int = random.randint(0, len(Maze)-1)
-                ObjectY: int = random.randint(0, len(Maze[0])-1)
-                while(Maze[ObjectY][ObjectX] != MazeElement.GetElement("Sol")["Image"]):
+                ObjectX: int = random.randint(0, len(cls.Map)-1)
+                ObjectY: int = random.randint(0, len(cls.Map[0])-1)
+                while(cls.Map[ObjectY][ObjectX] != MazeElement.GetElement(cls, "Sol")["Image"]):
                     # do it again until random position is ground
-                    ObjectX = random.randint(0, len(Maze)-1)
-                    ObjectY = random.randint(0, len(Maze[0])-1)
+                    ObjectX = random.randint(0, len(cls.Map)-1)
+                    ObjectY = random.randint(0, len(cls.Map[0])-1)
                 # place current object at this position (replace the ground with it)
-                Maze[ObjectY][ObjectX] = CurrentObject["Image"]
+                cls.Map[ObjectY][ObjectX] = CurrentObject["Image"]
 
 
-    @staticmethod
-    def DrawOnScreen():
+    @classmethod
+    def DrawOnScreen(cls):
         """ 
             Draw maze in console
             Including player
@@ -105,7 +102,7 @@ class Maze:
 
         # With simple loop (gives only the content)
         # For each line (Y) in Maze
-        for Line in Map:
+        for Line in cls.Map:
             # For each character (X) in line
             for Column in Line:
                 # Print current maze element at Y, X without jumping a line

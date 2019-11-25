@@ -1,6 +1,6 @@
 import os
 import json
-import Models.Maze as Maze
+#from Models.Maze import *
 
 class MazeElement:
     """
@@ -14,7 +14,7 @@ class MazeElement:
         Image: str = "☻"):
         """
             Constructor
-
+    
             :param arg1: Player name
             :type arg1: string
             :param arg2: Player image
@@ -25,7 +25,7 @@ class MazeElement:
 
 
     @staticmethod
-    def LoadElementsFromFile():
+    def LoadElementsFromFile(Maze):
         """ 
             Load maze elements from json file and store them into list of dictionaries
         """
@@ -53,6 +53,7 @@ class MazeElement:
     
     @staticmethod
     def GetElement(
+        Maze,
         Name: str = "",
         Symbol: str = "",
         Image: str = "") -> {}:

@@ -1,5 +1,5 @@
-import Models.Maze as Maze
-import Models.MazeElement as MazeElement
+#from Models.Maze import *
+from Models.MazeElement import *
 
 class Player:
     """
@@ -8,22 +8,23 @@ class Player:
         Instanciable
     """
 
-    def __init__(self, 
-        Name: str = "Anonyme", 
-        Image: str = "☻"):
-        """
-            Constructor
+    Name: str = "Anonyme"
+    Image: str = "☻"
+    X: int = 0
+    Y: int = 0
+    Backpack : list()
 
-            :param arg1: Player name
-            :type arg1: string
-            :param arg2: Player image
-            :type arg2: string
-        """
-        self.Name: str = Name
-        self.Image: str = Image 
-        self.X: int = 0
-        self.Y: int = 0
-        self.Backpack = list()
+    #def __init__(self, 
+    #    Name: str = "Anonyme", 
+    #    Image: str = "☻"):
+    #    """
+    #        Constructor
+    #
+    #        :param arg1: Player name
+    #        :type arg1: string
+    #        :param arg2: Player image
+    #        :type arg2: string
+    #    """
 
 
     @classmethod
@@ -58,6 +59,7 @@ class Player:
 
     @classmethod
     def PlaceInMaze(cls,
+        Maze,
         PlayerNewX: int = 0,
         PlayerNewY: int = 0):
         """ 
@@ -82,7 +84,7 @@ class Player:
                 X = 0
                 for Character in Line:
                     # If position contains entrance (E)
-                    if (Maze.Map[Y][X] == MazeElement.GetElement("Entrée")["Image"]):
+                    if (Maze.Map[Y][X] == MazeElement.GetElement(Maze, "Entrée")["Image"]):
                         # Save coordinates for player
                         cls.X = X
                         cls.Y = Y
@@ -98,9 +100,9 @@ class Player:
         else:
             # Player is already in maze
             # replace actual player position with a floor
-            Maze[cls.Y][cls.X] = MazeElement.GetElement("Sol")["Image"]
+            Maze.Map[cls.Y][cls.X] = MazeElement.GetElement(Maze, "Sol")["Image"]
             # and place player to new position
-            Maze[PlayerNewY][PlayerNewX] = cls.PlayerImage
+            Maze.Map[PlayerNewY][PlayerNewX] = cls.PlayerImage
 
 
     @classmethod

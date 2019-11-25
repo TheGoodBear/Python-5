@@ -6,18 +6,11 @@
 import os
 import json
 import random
-import Models.Game as Game
-import Models.Player as Player
-import Models.Maze as Maze
-
-
-# Variables (must be declared BEFORE using them)
-# ---------
-
-
-# Methods (must be declared BEFORE using them)
-# -------
-
+import Models
+from Models.Game import *
+from Models.Maze import *
+from Models.MazeElement import *
+from Models.Player import *
 
 # Application
 # -----------
@@ -30,14 +23,21 @@ Game.ApplicationStart()
 # Ask for player data
 PlayerName = Player.GetPlayerData()
 
-# Say welcome
-Game.SayWelcome()
-
 
 # 2) Initialize Maze
 Maze.Initialize()
+
+#print(Maze.FileName)
+#Maze.FileName="ddd"
+#print(Maze.FileName)
+#Maze.Initialize()
+#print(Maze.FileName)
+#mm = Maze()
+#mm.FileName="xxx"
+#print(mm.FileName)
+
 # Load maze elements from json file
-Maze.LoadElementsFromFile()
+MazeElement.LoadElementsFromFile(Maze)
 # Load maze from text file
 Maze.LoadMapFromFile()
 
@@ -45,13 +45,13 @@ Maze.LoadMapFromFile()
 Maze.PlaceObjectsAtRandomPositions()
 
 # Place player in maze
-Player.PlaceInMaze()
+Player.PlaceInMaze(Maze)
 
 # Draw maze on screen
 Maze.DrawOnScreen()
 
 # Start game
-Game.StartGame()
+Game.StartGame(Maze)
 
 
 # 3) Game loop
