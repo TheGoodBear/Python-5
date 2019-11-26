@@ -27,15 +27,6 @@ PlayerName = Player.GetPlayerData()
 # 2) Initialize Maze
 Maze.Initialize()
 
-#print(Maze.FileName)
-#Maze.FileName="ddd"
-#print(Maze.FileName)
-#Maze.Initialize()
-#print(Maze.FileName)
-#mm = Maze()
-#mm.FileName="xxx"
-#print(mm.FileName)
-
 # Load maze elements from json file
 MazeElement.LoadElementsFromFile(Maze)
 # Load maze from text file

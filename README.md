@@ -12,7 +12,7 @@
 
     - Architecture logicielle :
         - Programmation Orientée Objet
-        - Classe, Instance, Propriété, Méthode (staticque et d'instance), Constructeur
+        - Classe, Instance, Propriété, Méthode (de classe, statique et d'instance), Constructeur
 
     - Données : NA
 

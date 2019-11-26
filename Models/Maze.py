@@ -6,12 +6,15 @@ class Maze:
     """
         Used to manage the maze
 
-        Instanciable
+        Not instanciable
     """
 
+    # Class properties
     FilePath: str 
     FileName: str 
+    # stores the maze structure (2 dimensional list)
     Map = list()
+    # stores the elements composing the maze
     Elements = list()
 
 
@@ -20,7 +23,7 @@ class Maze:
         FilePath: str = "Mazes/", 
         FileName: str = "Maze 1"):
         """
-            Constructor
+            Initialize the maze
     
             :param arg1: Maze file path
             :type arg1: string

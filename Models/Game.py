@@ -23,6 +23,9 @@ class Game:
     def StartGame(Maze):
         """ 
             Give rules to player
+
+            :param arg1: The maze
+            :type arg1: Maze
         """
 
         print(

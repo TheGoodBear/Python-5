@@ -1,27 +1,12 @@
 import os
 import json
-#from Models.Maze import *
 
 class MazeElement:
     """
         Used to manage elements compozing the maze
 
-        Instanciable
+        Not instanciable
     """
-
-    def __init__(self, 
-        Name: str = "Anonyme", 
-        Image: str = "☻"):
-        """
-            Constructor
-    
-            :param arg1: Player name
-            :type arg1: string
-            :param arg2: Player image
-            :type arg2: string
-        """
-        self.Name: str = Name
-        self.Image: str = Image 
 
 
     @staticmethod
@@ -58,14 +43,16 @@ class MazeElement:
         Symbol: str = "",
         Image: str = "") -> {}:
         """ 
-            Return a maze element by its name, symbol or image
+            Return a maze element by its name, symbol or image or None if none matches
 
-            :param arg1: The element name
-            :type arg1: string
-            :param arg2: The element symbol
+            :param arg1: The maze
+            :type arg1: Maze
+            :param arg2: The element name
             :type arg2: string
-            :param arg3: The element image
+            :param arg3: The element symbol
             :type arg3: string
+            :param arg4: The element image
+            :type arg4: string
 
             :return: The element (dictionary of all its properties)
             :rtype: dictionary
