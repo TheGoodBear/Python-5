@@ -32,7 +32,7 @@ MazeElement.LoadElementsFromFile(Maze)
 # Load maze from text file
 Maze.LoadMapFromFile()
 
-# Put objects in random positions
+# Put objects at random positions
 Maze.PlaceObjectsAtRandomPositions()
 
 # Place player in maze
