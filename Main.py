@@ -3,10 +3,6 @@
 
 # Modules importation
 # -------------------
-import os
-import json
-import random
-import Models
 from Models.Game import *
 from Models.Maze import *
 from Models.MazeElement import *
