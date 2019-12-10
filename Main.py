@@ -13,11 +13,11 @@ from Models.Player import *
 
 # 1) Show initial message and get player data
 
-# Application start
-Game.ApplicationStart()
+# Initialize game
+Game.Initialize()
 
 # Ask for player data
-PlayerName = Player.GetPlayerData()
+PlayerName = Player.GetData()
 
 
 # 2) Initialize Maze
@@ -38,7 +38,7 @@ Player.PlaceInMaze(Maze)
 Maze.DrawOnScreen()
 
 # Start game
-Game.StartGame(Maze)
+Game.Start(Maze)
 
 
 # 3) Game loop

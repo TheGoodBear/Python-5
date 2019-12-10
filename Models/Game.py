@@ -11,7 +11,7 @@ class Game:
 
 
     @staticmethod
-    def ApplicationStart():
+    def Initialize():
         """ 
             Initialize application and show initial message
         """
@@ -20,7 +20,7 @@ class Game:
 
 
     @staticmethod
-    def StartGame(Maze):
+    def Start(Maze):
         """ 
             Give rules to player
 

@@ -17,7 +17,7 @@ class Player:
 
 
     @classmethod
-    def GetPlayerData(cls):
+    def GetData(cls):
         """ 
             Get player data
         """
